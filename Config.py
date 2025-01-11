@@ -1,0 +1,26 @@
+class PPOConfig:
+    env_name        =  'balance'  # 环境名称
+    device          =   'cuda'  # 运行 PPO 的设备
+    num_envs        =      32  # 并行环境的数量
+    max_env_steps   =    2000  # 环境在截断前的最大步数
+    total_steps     =  400 * 60000  # 总训练步数
+    target_reward   =    None  # 当达到此平均奖励时停止训练
+    entropy_beta    =    0.01  # 熵损失的权重
+    gamma           =    0.99  # 折扣因子
+    gae_lambda      =    0.95  # GAE lambda
+    lr_start        =    1e-3  # 优化器的初始学习率
+    lr_final        =    1e-4  # 使用学习率衰减时的最终学习率
+    lr_decay        =    True  # 是否衰减学习率
+    hidden_dim      =      64  # 网络隐藏层的神经元数量
+    rollout_steps   =    1875  # 每次 rollout 的步数
+    num_epochs      =      10  # 每次训练使用收集的经验的次数
+    num_minibatches =       5  # 将收集的经验分成的小批次数量
+    advantage_norm  =    True  # 是否标准化优势
+    value_loss      =      1.  # 价值损失的权重
+    ppo_clip        =     0.2  # PPO 策略比率裁剪值
+    grad_norm_clip  =     0.5  # 全局梯度裁剪值
+    reward_clip     =     20 # 奖励将在 +-reward_clip 之间裁剪
+    scale_rewards   =   False  # 是否通过奖励的标准差缩放奖励
+    checkpoint      =    True  # 是否定期保存模型权重
+    num_checkpoints =       5  # 创建的检查点/打印日志的数量
+    verbose         =    True  # 是否打印训练进度
